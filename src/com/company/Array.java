@@ -3,9 +3,10 @@ package com.company;
 //静态数组：容量固定
 //EA:可以使用泛型扩展（泛型对象是类），但不支持基本数据类型（可使用包装类转换为类对象）。
 //EB:可以通过创建新数组并拷贝原数据实现动态数组。
+//EC：可以扩展为队列、循环队列（队空 tail == first， 队满 （tail+1）%capacity == first， 浪费一个元素空间）
 public class Array
 {
-    // 索引可以有语义也可以没有语意
+    // 索引可以有语意也可以没有语意
     private int index;
     private int size = 0;
     private int[] array = {0};
@@ -62,8 +63,8 @@ public class Array
     }
 
     public void add(int index, int e) {
-        if (size >= capacity){
-            throw new IllegalArgumentException("add failed, Array is full.");
+        if (size >= array.length){
+            resize(2*array.length);
         }
         if (index > size || index < 0) {
             throw new IllegalArgumentException("add failed, Index is illegal.");
@@ -80,7 +81,7 @@ public class Array
     public void addFirst(int e) {
         add(0, e);
     }
-
+    @Override
     public String toString(){
         StringBuilder res = new StringBuilder();
         res.append(String.format("Array size = %d, capacity = %d\n", size, getCapacity()));
@@ -124,12 +125,33 @@ public class Array
         size--;
         return data;
     }
+    public int getLast(){
+        if (size == 0)
+            throw new IllegalArgumentException("GetLast Failed. EmptyArray");
+        return array[size-1];
+    }
+
     public void removeElement(int e) {
         int index = find(e);
         if (index != -1) {
             remove(index);
         }
     }
+    public int removeLast(){
+        return remove(size-1);
+    }
+
+    public void resize(int newcapacity){
+        int[] newArray = new int[newcapacity];
+        if (newcapacity <= array.length ){
+            throw new IllegalArgumentException("resize failed. Illegal capacity.");
+        }
+        for (int i = 0; i < size; i++){
+            newArray[i] = array[i];
+        }
+        array = newArray;
+    }
+
 
 }
 
