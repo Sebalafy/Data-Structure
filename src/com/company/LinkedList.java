@@ -1,6 +1,11 @@
 package com.company;
 
-//队列：实现添加头尾节点、头结点dequeue，尾节点enqueue
+// 双链表，方便删除节点但是维护较为复杂。
+//循环列表，尾节点指向虚拟头结点 ， 从人意一个节点都可以遍历链表。java linkedlist这个类的底层实现是循环列表。
+
+//数组链表，node：int nextNode；int value。（空间有限）
+
+//队列：实现添加头尾节点、头结点dequeue，尾节点enqueue,这种对应关系是因为该链表是单向的，尾节点不容易实现dequeue。
 /*
 public void enqueue(E e){
     if(list.isEmpty()){
@@ -46,7 +51,7 @@ public class LinkedList<E> {
 
     }
 
-
+    //统一从真实头结点开始的逻辑操作，不用先判断头节点然后应用逻辑。
     private  Node dummyHead;
     private int size;
     public int getSize(){
