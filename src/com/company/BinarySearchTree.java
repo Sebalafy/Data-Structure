@@ -4,7 +4,7 @@ import java.util.Stack;
 import java.util.Queue;
 
 // BinarySearchTree
-public class BinaryTree<E extends Comparable<E>> {
+public class BinarySearchTree<E extends Comparable<E>> {
     private class Node{
         public E e;
         public Node left, right;
@@ -20,7 +20,7 @@ public class BinaryTree<E extends Comparable<E>> {
     private Node root;
     private int size;
 
-    public BinaryTree(){
+    public BinarySearchTree(){
         root = null;
         size = 0;
     }

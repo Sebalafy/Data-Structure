@@ -53,7 +53,7 @@ public class LinkedList<E> {
 
     //统一从真实头结点开始的逻辑操作，不用先判断头节点然后应用逻辑。
     private  Node dummyHead;
-    private int size;
+    private int size = 0;
     public int getSize(){
         return size;
     }
@@ -143,6 +143,32 @@ public class LinkedList<E> {
         delNode.next = null;
         size--;
         return delNode.e;
+    }
+
+    public boolean contains(E e){
+        Node node = dummyHead.next;
+        for (int i = 0; i < size; i++){
+            if (node.e == e){
+                return true;
+            }
+            node = node.next;
+        }
+        return false;
+    }
+
+    public void remove(E e){
+        if (!contains(e)){
+            return;
+        }
+
+        Node node = dummyHead.next;
+        for (int i = 0; i < size; i++){
+            if (e == node.e){
+                remove(i);
+                break;
+            }
+            node = node.next;
+        }
     }
 
     @Override
