@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Random;
+
 import com.sun.jdi.InterfaceType;
 
 public class Main {
@@ -59,7 +61,20 @@ public class Main {
         bstmap.add(2,22);
         bstmap.add(3,333);
         bstmap.remove(2);
-        System.out.print(bstmap);
+        //System.out.print(bstmap);
 
+        //MaxHeap
+        MaxHeap mh = new MaxHeap();
+        Random random = new Random();
+        for (int i = 0; i < 10; i++){
+            mh.add((random.nextInt(Integer.MAX_VALUE)));
+        }
+        System.out.print("\n MaxHeap: \n ||");
+        int pre = 0, cur;
+        for (int i = 0; i < 10; i++){
+            cur = mh.extractMax();
+            System.out.print(cur+" || ");
+
+        }
     }
 }

@@ -18,6 +18,11 @@ public class Array
         this.capacity = capacity;
     }
 
+    public Array(int[] nums){
+        array = nums;
+        size = nums.length;
+    }
+
     // 直接调用其他构造函数
     public Array(){
         this(10);

@@ -103,4 +103,15 @@ public class LinkedListMap<K, V> implements Map<K, V> {
         }
         return null;
     }
+    @Override
+    public String toString(){
+        Node node = dummyHead.next;
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n");
+        while (node != null){
+            sb.append(node.toString()+"->");
+            node = node.next;
+        }
+        return sb.toString();
+    }
 }
