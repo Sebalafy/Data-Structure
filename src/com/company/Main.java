@@ -76,5 +76,10 @@ public class Main {
             System.out.print(cur+" || ");
 
         }
+
+        //SegmentTree
+        Integer[] numss = {-1, 3, 5, 2, 7, -5, 4};
+        SegmentTree<Integer> st = new SegmentTree<>(numss, (Integer a, Integer b) -> a + b);
+
     }
 }
